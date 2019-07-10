@@ -40,10 +40,8 @@ year_input = int(year_input)
 month_input = input("Enter a mont in integer format with no leading zero: ")
 month_input = int(month_input)
 
-# some_input = input("enter crap here: ")
-# some_input = some_input.split()
-
-# print(some_input)
+# if year_input == None:
+#   print(calendar.prmonth(2019, 7))
 
 
 print(new_func(year_input, month_input))
