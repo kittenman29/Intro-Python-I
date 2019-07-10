@@ -26,23 +26,49 @@ from datetime import datetime
 
 
 
-def new_func(a, b=None):
-  if b is None:
-    return(calendar.prmonth(2019, a))
-  elif (a, b):
-    return(calendar.prmonth(a, b))
+# def new_func(a, b=None):
+#   if b is None:
+#     return(calendar.prmonth(2019, a))
+#   elif (a, b):
+#     return(calendar.prmonth(a, b))
+#   else:
+#     return(calendar.prmonth(2019, 7))
+
+
+# year_input = input("Enter a year YYYY: ")
+# year_input = int(year_input)
+# month_input = input("Enter a mont in integer format with no leading zero: ")
+# month_input = int(month_input)
+
+# # if year_input == None:
+# #   print(calendar.prmonth(2019, 7))
+
+
+# print(new_func(year_input, month_input))
+
+#Gets the arguments without the first argument which is the name of the file
+args = sys.argv[1:]
+
+# User provides a month and year
+try:
+  if len(args) == 2:
+    month = int(args[0])
+    year = int(args[1])
+  # User provides only a month
+  elif len(args) == 1:
+    month = int(args[0])
+    year = datetime.now().year
+  # User provides no args
+  elif len(args) == 0:
+    now = datetime.now()
+    month = now.month
+    year = now.year
+  # User provides incorrect arguments
   else:
-    return(calendar.prmonth(2019, 7))
+    print("Incorrect arguments")
+    exit()
+except:
+  print("ERROR: Must be in the format '14_cal.py month [year]'")
 
-
-year_input = input("Enter a year YYYY: ")
-year_input = int(year_input)
-month_input = input("Enter a mont in integer format with no leading zero: ")
-month_input = int(month_input)
-
-# if year_input == None:
-#   print(calendar.prmonth(2019, 7))
-
-
-print(new_func(year_input, month_input))
-
+tc = calendar.TextCalendar()
+tc.prmonth(year, month)
